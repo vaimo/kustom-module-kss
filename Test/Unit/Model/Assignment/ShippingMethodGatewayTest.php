@@ -113,7 +113,7 @@ class ShippingMethodGatewayTest extends TestCase
     protected function setUp(): void
     {
         $this->mockFactory     = new MockFactory($this);
-        $objectFactory         = new TestObjectFactory($this->mockFactory);
+        $objectFactory         = new TestObjectFactory('');
         $this->model           = $objectFactory->create(ShippingMethodGateway::class);
         $this->dependencyMocks = $objectFactory->getDependencyMocks();
 
