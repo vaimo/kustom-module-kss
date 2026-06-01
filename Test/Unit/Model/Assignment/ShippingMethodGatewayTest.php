@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Klarna Bank AB (publ)
  *
@@ -12,6 +13,7 @@ use Klarna\Base\Test\Unit\Mock\MockFactory;
 use Klarna\Base\Test\Unit\Mock\TestObjectFactory;
 use Klarna\Kss\Model\Assignment\ShippingMethodGateway;
 use Magento\Framework\DataObject;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Klarna\Kss\Model\ShippingMethodGateway as ShippingMethodGatewayTable;
 
@@ -37,6 +39,7 @@ class ShippingMethodGatewayTest extends TestCase
      */
     private MockFactory $mockFactory;
 
+    #[DataProvider('getShippingInformation')]
     /**
      * @covers ::assignByKlarnaInstance
      * @param array $shippingInformation
@@ -59,6 +62,7 @@ class ShippingMethodGatewayTest extends TestCase
         static::assertSame($this->shippingMethodGatewayTable, $result);
     }
 
+    #[DataProvider('getShippingInformation')]
     /**
      * @covers ::assignByKlarnaInstance
      * @param array $shippingInformation
@@ -87,7 +91,7 @@ class ShippingMethodGatewayTest extends TestCase
      *
      * @return array
      */
-    public function getShippingInformation(): array
+    public static function getShippingInformation(): array
     {
         return [
             [
